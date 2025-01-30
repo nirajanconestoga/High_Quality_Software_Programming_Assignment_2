@@ -1,14 +1,23 @@
 ﻿namespace basketballGame
 {
-    class joeSpend
+    class JoeSpend
     {
+        // Define an enum for ticket types with corresponding prices
+        enum TicketType
+        {
+            Purple = 50,
+            Green = 80,
+            Blue = 100
+        }
         static void Main()
         {
-            int purpleTickets = 0, greenTickets=0, blueTickets=0;
+            // Define variables for the tickets
+            int purpleTickets= 0, greenTickets=0, blueTickets=0;
+
             // Ask Joe for the number of each type of ticket he bought
             try
             {
-                Console.Write("Enter the number of Purple tickets you bought($50 each): ");
+                Console.Write("Enter the number of Purple tickets you bought: ");
                 purpleTickets = int.Parse(Console.ReadLine());
                 if (purpleTickets < 0)
                 {
@@ -24,7 +33,7 @@
 
             try
             {
-                Console.Write("Enter the number of Purple tickets you bought($50 each): ");
+                Console.Write("Enter the number of Green tickets you bought: ");
                 greenTickets = int.Parse(Console.ReadLine());
                 if (greenTickets < 0)
                 {
@@ -40,7 +49,7 @@
 
             try
             {
-                Console.Write("Enter the number of Purple tickets you bought($50 each): ");
+                Console.Write("Enter the number of Blue tickets you bought: ");
                 blueTickets = int.Parse(Console.ReadLine());
                 if (blueTickets < 0)
                 {
@@ -54,18 +63,19 @@
                 return;
             }
 
-            // Calculation of the total cost joe spent
-            int totalCost = (purpleTickets * 50) + (greenTickets * 80) + (blueTickets * 100);
-
             // Calculation of the total number of games joe attended
             int totalGames = purpleTickets + greenTickets + blueTickets;
 
+            // Calculation of the total cost joe spent using the enum for ticket prices
+            double totalCost = (purpleTickets * (int)TicketType.Purple) +
+                             (greenTickets * (int)TicketType.Green) +
+                             (blueTickets * (int)TicketType.Blue);
+
             // Calculate the average price per game
             double averagePrice;
-
             if (totalGames > 0)
             {
-                averagePrice = (double)totalCost / totalGames;
+                averagePrice = totalCost / totalGames;
             }
             else
             {
