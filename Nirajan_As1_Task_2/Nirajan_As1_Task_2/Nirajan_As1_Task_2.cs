@@ -1,4 +1,4 @@
-﻿namespace basketballGame
+﻿namespace BasketballGame
 {
     class JoeSpend
     {
@@ -9,64 +9,48 @@
             Green = 80,
             Blue = 100
         }
+
+        // Method to handle user input for tickets
+        static int GetTicketInput(string ticketType)
+        {
+            int tickets = 0;
+            Console.Write($"Enter the number of {ticketType} tickets you bought: ");
+            try
+            {
+                tickets = int.Parse(Console.ReadLine());
+                if (tickets < 0)
+                {
+                    Console.WriteLine("Invalid ticket number.");
+                    return -1; // Indicate invalid input
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+                return -1; // Indicate invalid input
+            }
+            return tickets;
+        }
+
         static void Main()
         {
             // Define variables for the tickets
-            int purpleTickets= 0, greenTickets=0, blueTickets=0;
+            int purpleTickets = 0, greenTickets = 0, blueTickets = 0;
 
-            // Ask Joe for the number of each type of ticket he bought
-            try
-            {
-                Console.Write("Enter the number of Purple tickets you bought: ");
-                purpleTickets = int.Parse(Console.ReadLine());
-                if (purpleTickets < 0)
-                {
-                    Console.WriteLine("Invalid ticket number");
-                    return;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-                return;
-            }
+            // Get user input for each type of ticket
+            purpleTickets = GetTicketInput("Purple");
+            if (purpleTickets == -1) return;
 
-            try
-            {
-                Console.Write("Enter the number of Green tickets you bought: ");
-                greenTickets = int.Parse(Console.ReadLine());
-                if (greenTickets < 0)
-                {
-                    Console.WriteLine("Invalid ticket number");
-                    return;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-                return;
-            }
+            greenTickets = GetTicketInput("Green");
+            if (greenTickets == -1) return;
 
-            try
-            {
-                Console.Write("Enter the number of Blue tickets you bought: ");
-                blueTickets = int.Parse(Console.ReadLine());
-                if (blueTickets < 0)
-                {
-                    Console.WriteLine("Invalid ticket number");
-                    return;
-                }
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-                return;
-            }
+            blueTickets = GetTicketInput("Blue");
+            if (blueTickets == -1) return;
 
-            // Calculation of the total number of games joe attended
+            // Calculation of the total number of games Joe attended
             int totalGames = purpleTickets + greenTickets + blueTickets;
 
-            // Calculation of the total cost joe spent using the enum for ticket prices
+            // Calculation of the total cost Joe spent using the enum for ticket prices
             double totalCost = (purpleTickets * (int)TicketType.Purple) +
                              (greenTickets * (int)TicketType.Green) +
                              (blueTickets * (int)TicketType.Blue);
@@ -93,4 +77,3 @@
         }
     }
 }
-
