@@ -4,28 +4,53 @@
     {
         static void Main()
         {
+            int purpleTickets = 0, greenTickets=0, blueTickets=0;
             // Ask Joe for the number of each type of ticket he bought
-            Console.Write("Enter the number of Purple tickets you bought($50 each): ");
-            int purpleTickets = int.Parse(Console.ReadLine());
-            if (purpleTickets < 0)
+            try
             {
-                Console.WriteLine("Invalid ticket number");
+                Console.Write("Enter the number of Purple tickets you bought($50 each): ");
+                purpleTickets = int.Parse(Console.ReadLine());
+                if (purpleTickets < 0)
+                {
+                    Console.WriteLine("Invalid ticket number");
+                    return;
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
                 return;
             }
 
-            Console.Write("Enter the number of Green tickets you bought ($80 each): ");
-            int greenTickets = int.Parse(Console.ReadLine());
-            if (greenTickets < 0)
+            try
             {
-                Console.WriteLine("Invalid ticket number");
+                Console.Write("Enter the number of Purple tickets you bought($50 each): ");
+                greenTickets = int.Parse(Console.ReadLine());
+                if (greenTickets < 0)
+                {
+                    Console.WriteLine("Invalid ticket number");
+                    return;
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
                 return;
             }
 
-            Console.Write("Enter the number of Blue tickets you bought ($100 each): ");
-            int blueTickets = int.Parse(Console.ReadLine());
-            if (greenTickets < 0)
+            try
             {
-                Console.WriteLine("Invalid ticket number");
+                Console.Write("Enter the number of Purple tickets you bought($50 each): ");
+                blueTickets = int.Parse(Console.ReadLine());
+                if (blueTickets < 0)
+                {
+                    Console.WriteLine("Invalid ticket number");
+                    return;
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
                 return;
             }
 
@@ -54,8 +79,6 @@
             Console.WriteLine($"Total amount spent: ${totalCost}");
             Console.WriteLine($"Total number of games attended: {totalGames}");
             Console.WriteLine($"Average price per game: ${averagePrice:F2}");
-
-
             Console.ReadLine();
         }
     }
