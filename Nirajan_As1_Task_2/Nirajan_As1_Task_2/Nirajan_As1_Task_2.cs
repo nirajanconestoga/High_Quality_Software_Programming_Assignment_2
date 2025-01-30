@@ -7,12 +7,27 @@
             // Ask Joe for the number of each type of ticket he bought
             Console.Write("Enter the number of Purple tickets you bought($50 each): ");
             int purpleTickets = int.Parse(Console.ReadLine());
+            if (purpleTickets < 0)
+            {
+                Console.WriteLine("Invalid ticket number");
+                return;
+            }
 
             Console.Write("Enter the number of Green tickets you bought ($80 each): ");
             int greenTickets = int.Parse(Console.ReadLine());
+            if (greenTickets < 0)
+            {
+                Console.WriteLine("Invalid ticket number");
+                return;
+            }
 
             Console.Write("Enter the number of Blue tickets you bought ($100 each): ");
             int blueTickets = int.Parse(Console.ReadLine());
+            if (greenTickets < 0)
+            {
+                Console.WriteLine("Invalid ticket number");
+                return;
+            }
 
             // Calculation of the total cost joe spent
             int totalCost = (purpleTickets * 50) + (greenTickets * 80) + (blueTickets * 100);
@@ -39,6 +54,9 @@
             Console.WriteLine($"Total amount spent: ${totalCost}");
             Console.WriteLine($"Total number of games attended: {totalGames}");
             Console.WriteLine($"Average price per game: ${averagePrice:F2}");
+
+
+            Console.ReadLine();
         }
     }
 }
